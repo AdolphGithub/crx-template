@@ -1,0 +1,54 @@
+{
+  "name": "crx-template",
+  "version": "1.0.0",
+  "description": "chrome extension template",
+  "scripts": {
+    "dev": "./node_modules/.bin/webpack -c ./build/dev.js --progress",
+    "build": "./node_modules/.bin/webpack -c ./build/prod.js",
+    "lint": "./node_modules/.bin/eslint \"src/**/*.{js,vue}\""
+  },
+  "author": "adolph",
+  "license": "MIT",
+  "pre-commit": [
+    "lint"
+  ],
+  "dependencies": {
+    "@vue/compiler-sfc": "^3.2.26",
+    "jest-worker": "^27.4.5",
+    "mime-db": "^1.51.0",
+    "node-releases": "^2.0.1",
+    "scss-loader": "^0.0.1",
+    "serialize-javascript": "^6.0.0",
+    "vant": "^3.3.7",
+    "vue": "^3.2.26",
+    "vue-router": "^4.0.12",
+    "vuex": "^4.0.2"
+  },
+  "devDependencies": {
+    "@babel/preset-env": "^7.16.7",
+    "autoprefixer": "^10.4.1",
+    "babel-loader": "^8.2.3",
+    "babel-plugin-import": "^1.13.3",
+    "copy-webpack-plugin": "^10.2.0",
+    "core-js": "^3.20.1",
+    "css-loader": "^6.5.1",
+    "eslint": "^8.5.0",
+    "eslint-plugin-vue": "^8.2.0",
+    "html-webpack-plugin": "^5.5.0",
+    "node-sass": "^7.0.1",
+    "postcss-loader": "^6.2.1",
+    "pre-commit": "^1.2.2",
+    "sass-loader": "^12.4.0",
+    "style-loader": "^3.3.1",
+    "stylelint": "^14.2.0",
+    "stylelint-config-standard": "^24.0.0",
+    "terser-webpack-plugin": "^5.3.0",
+    "vue-loader": "^17.0.0",
+    "webpack": "^5.65.0",
+    "webpack-cli": "^4.9.1",
+    "webpack-dev-server": "^4.7.1",
+    "webpack-manifest-plugin": "^4.0.2",
+    "webpack-merge": "^5.8.0",
+    "webpack-nano": "^1.1.1"
+  }
+}
