@@ -5,6 +5,7 @@ const { VueLoaderPlugin } = require('vue-loader')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
 const TerserPlugin = require('terser-webpack-plugin')
 const utils = require('../utils/util')
+
 // 导出默认的配置信息. 其他的先不管.
 module.exports = {
   entry: utils.findEntry(),

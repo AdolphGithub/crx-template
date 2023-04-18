@@ -5,15 +5,17 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 function findEntry() {
   const app_path = path.dirname(__dirname)
-  const entry_path = path.dirname(__dirname) + '/src/entry'
+  const sep = path.sep
+  const entry_path = path.dirname(__dirname) + sep + 'src' + sep + 'entry'
   const modules = []
   const entries = {}
   const dirs = fs.readdirSync(entry_path)
+  
 
   dirs.forEach(function(item) {
     const full_path = path.join(entry_path, item)
     const stat = fs.statSync(full_path)
-
+    
     if (stat.isDirectory()) {
       modules.push(full_path)
     }
@@ -25,32 +27,32 @@ function findEntry() {
   }
 
   modules.map(function(item) {
-    const entry = fs.statSync(item + '/main.js')
+    const entry = fs.statSync(item + sep + 'main.js')
     if (!entry.isFile()) {
       return
     }
 
-    const info = path.parse(item + '/main.js')
+    const info = path.parse(item + sep + 'main.js')
 
-    let dirname = info.dir.split('/').pop()
+    let dirname = info.dir.split(sep).pop()
 
     if (['panel', 'sidebar'].indexOf(dirname) > -1 ) {
-      dirname = 'devtools/' + dirname
+      dirname = 'devtools' + sep + dirname
     }
-
-    entries[dirname] = item + '/main.js'
+    
+    // 这里给改改. 将src/entry改为其他的形式. 头疼.
+    entries[dirname] = item + sep + 'main.js'
   })
-
-  if (fs.statSync(app_path + '/src/content.js').isFile()) {
-    entries['content'] = app_path + '/src/content.js'
+    if (fs.statSync(app_path + sep + ['', 'src', 'content.js'].join(sep)).isFile()) {
+    entries['content'] = app_path + ['', 'src', 'content.js'].join(sep)
   }
 
-  if (fs.statSync(app_path + '/src/background.js').isFile()) {
-    entries['background'] = app_path + '/src/background.js'
+  if (fs.statSync(app_path + ['', 'src','background.js'].join(sep)).isFile()) {
+    entries['background'] = app_path + ['', 'src', 'background.js'].join(sep)
   }
 
-  if (fs.statSync(app_path + '/src/devtools.js').isFile()) {
-    entries['devtools'] = app_path + '/src/devtools.js'
+  if (fs.statSync(app_path + ['', 'src','devtools.js'].join(sep)).isFile()) {
+    entries['devtools'] = app_path + ['', 'src','devtools.js'].join(sep)
   }
 
   return entries
