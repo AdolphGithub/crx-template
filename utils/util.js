@@ -43,7 +43,8 @@ function findEntry() {
     // 这里给改改. 将src/entry改为其他的形式. 头疼.
     entries[dirname] = item + sep + 'main.js'
   })
-    if (fs.statSync(app_path + sep + ['', 'src', 'content.js'].join(sep)).isFile()) {
+
+  if (fs.statSync(app_path + ['', 'src','content.js'].join(sep)).isFile()) {
     entries['content'] = app_path + ['', 'src', 'content.js'].join(sep)
   }
 

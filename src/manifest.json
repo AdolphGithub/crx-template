@@ -31,6 +31,19 @@
     "extension_pages": "script-src 'self'; object-src 'self'"
   },
   "permissions": [
-    "bookmarks"
-  ]
+    "bookmarks", "scripting", "activeTab", "tabs", "nativeMessaging"
+  ],
+  "background": {
+    "service_worker": "background.js",
+    "type": "module"
+  },
+  "content_scripts": [{
+    "runAt": "document_end",
+    "matches": ["http://*/*", "https://*/*"],
+    "js": ["content.js"]
+  }],
+  "web_accessible_resources": [{
+    "resources": ["content.js", "inject.js"],
+    "matches": ["<all_urls>"]
+  }]
 }
