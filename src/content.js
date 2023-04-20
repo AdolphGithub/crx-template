@@ -13,8 +13,8 @@ function injectScript(url) {
 (function(doc) {
   const container_wrap = doc.createElement('div')
   const container = doc.createElement('div')
-  container.className = 'qg_container'
-  container.id = 'qg_container'
+  container.className = 'demo_container'
+  container.id = 'demo_container'
   container.style.width = '150px'
   container.style.height = '300px'
   container.style.zIndex = '1000'
